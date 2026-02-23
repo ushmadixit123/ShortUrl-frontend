@@ -66,7 +66,7 @@ const UrlsTable = ({ onDelete, onEdit }) => {
               <TableRow key={url._id}>
                 <TableCell>
                   <Typography color="primary">
-                    <a href={`https://miniurl-backend.onrender.com/url/${url.shortCode}`} target="_blank">
+                    <a href={`https://miniurl-backend.onrender.com/url/${url.shortCode}`} target="_blank" rel="noreferrer">
                     https://miniurl-backend.onrender.com/url/{url.shortCode}
                     </a>
                   </Typography>

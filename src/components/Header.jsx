@@ -1,18 +1,47 @@
-import { AppBar, Toolbar, Typography } from "@mui/material";
-import logo from "../assets/favicon.jpg";
+import { AppBar, Toolbar, Typography, Button, Box } from "@mui/material";
+import { Link, useNavigate } from "react-router-dom";
+import logo from "../assets/logo.png";
 
 const Header = () => {
+  const navigate = useNavigate();
   return (
-    <AppBar position="static">
-      <Toolbar>
-        <img
-          src={logo}
-          alt="logo"
-          style={{ width: "4%", borderRadius: 10, marginRight: 10 }}
-        />
-        <Typography variant="h5" fontWeight="bold" color="white">
-          ShortUrl.com
-        </Typography>
+    <AppBar position="static" sx={{backgroundColor : "#7cafe9"}}>
+      <Toolbar sx={{ justifyContent: "space-between" }}>
+        
+        {/* Left side: Logo + Title */}
+        {!localStorage.getItem("token") && 
+        <Box display="flex" alignItems="center">
+          <img
+          onClick={()=>navigate('/')}
+            src={logo}
+            alt="logo"
+            style={{ width: "100px", borderRadius: 8, marginRight: 10 , cursor:"pointer" }}
+          />
+          
+        </Box> }
+        
+
+        {/* Right side: Auth Buttons */}
+        {!localStorage.getItem("token") && <Box>
+          <Button
+            component={Link}
+            to="/login"
+            color="inherit"
+            sx={{ mr: 1 }}
+          >
+            Login
+          </Button>
+
+          <Button
+            component={Link}
+            to="/signup"
+            variant="outlined"
+            color="inherit"
+          >
+            Sign Up
+          </Button>
+        </Box> }
+        
       </Toolbar>
     </AppBar>
   );

@@ -41,9 +41,9 @@ const [toast, setToast] = useState({
       severity: "success",
     });
 
-    setTimeout(() => {
+    // setTimeout(() => {
       navigate("/dashboard");
-    }, 1200);
+    // }, 1200);
 
   } catch (err) {
     setToast({

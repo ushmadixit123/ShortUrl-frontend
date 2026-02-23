@@ -14,7 +14,6 @@ import {
     Divider,
     Tooltip
 } from "@mui/material";
-import dashboard from "../assets/dashboard.png";
 import { fetchAnalytics } from "../redux/slices/analyticSlice.js";
 
 

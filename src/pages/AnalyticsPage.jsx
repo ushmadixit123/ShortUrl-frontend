@@ -145,7 +145,7 @@ const AnalyticsPage = () => {
                                     <React.Fragment key={index}>
                                         <ListItem >
                                             <ListItemText
-                                                primary={`https://miniurl-backend.onrender.com/${activity.shortUrl}`}
+                                                primary={`https://miniurl-backend.onrender.com/url/${activity.shortUrl}`}
                                                 secondary={new Date(activity.timestamp).toLocaleString()}
                                             />
                                         </ListItem>
@@ -208,7 +208,7 @@ const AnalyticsPage = () => {
                                         sx={{ wordBreak: "break-all", opacity: 0.7 }}
                                     >
                                         {console.log(mostClickedLink)}
-                                        <strong>Short URL</strong> : {`https://miniurl-backend.onrender.com/${mostClickedLink.shortUrl}`}
+                                        <strong>Short URL</strong> : {`https://miniurl-backend.onrender.com/url/${mostClickedLink.shortUrl}`}
                                     </Typography>
 
                                     <Typography variant="h4" mt={2} fontWeight={600}>

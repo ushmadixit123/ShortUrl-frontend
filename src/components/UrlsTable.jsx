@@ -67,8 +67,8 @@ const UrlsTable = ({ onDelete, onEdit }) => {
               <TableRow key={url._id}>
                 <TableCell>
                   <Typography color="primary">
-                    <a href={`https://miniurl-backend.onrender.com/${url.shortCode}`} target="_blank">
-                    https://miniurl-backend.onrender.com/{url.shortCode}
+                    <a href={`https://miniurl-backend.onrender.com/url/${url.shortCode}`} target="_blank">
+                    https://miniurl-backend.onrender.com/url/{url.shortCode}
                     </a>
                   </Typography>
                 </TableCell>
@@ -111,7 +111,7 @@ const UrlsTable = ({ onDelete, onEdit }) => {
                   <Tooltip title="Copy">
                     <IconButton
                       size="small"
-                      onClick={() => handleCopy(`https://miniurl-backend.onrender.com/${url.shortCode}`)}
+                      onClick={() => handleCopy(`https://miniurl-backend.onrender.com/url/${url.shortCode}`)}
                     >
                       <ContentCopyIcon fontSize="small" />
                     </IconButton>

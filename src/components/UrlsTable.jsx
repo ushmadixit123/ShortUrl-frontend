@@ -18,7 +18,6 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserURLs } from "../redux/slices/urlSlice";
-import QRCodeTab from "./QRCodeTab";
 
 const UrlsTable = ({ onDelete, onEdit }) => {
   const dispatch = useDispatch();

@@ -7,7 +7,6 @@ import {
     ListItemIcon,
     ListItemText,
     Box,
-    Typography,
 } from "@mui/material";
 import logo from "../assets/logo1.png";
 import {

@@ -59,7 +59,7 @@ const SignupForm = () => {
         <CardContent>
           <Box textAlign="center" mb={2}>
             {/* Replace with your logo */}
-            <img src={logo} ></img>
+            <img src={logo} alt="logo"></img>
           </Box>
 
           <Typography

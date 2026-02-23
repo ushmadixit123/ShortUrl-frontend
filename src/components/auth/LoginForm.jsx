@@ -95,7 +95,7 @@ const [toast, setToast] = useState({
           <Box textAlign="center" >
             {/* Replace this with your own logo */}
             {/* <Typography variant="h6" fontWeight={700} color="#1976d2"> */}
-            <img src={logo} ></img>
+            <img src={logo} alt="logo-image"></img>
 
           </Box>
 

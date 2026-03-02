@@ -1,8 +1,8 @@
 import axios from "axios";
 
 const API = axios.create({
-  // baseURL: "https://miniurl-backend.onrender.com",
-    baseURL: "http://localhost:5001/",
+  baseURL: "https://miniurl-backend.onrender.com",
+    // baseURL: "http://localhost:5001/",
 
 });
 

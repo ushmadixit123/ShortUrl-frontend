@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import PublicLayout from "./layouts/PublicLayout";
 import PrivateLayout from "./layouts/PrivateLayout";
 import ProfilePage from "./pages/ProfilePage";
+import ProtectedRoutes from "./layouts/ProtectedRoutes";
 
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
@@ -31,9 +32,9 @@ console.log("token: ", token);
         </Route>
 
         {/* Private Routes */}
-        {token && (
+        <Route element={<ProtectedRoutes />}>
           <Route element={<PrivateLayout />}>
-            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="dashboard" element={<Dashboard />} />
             <Route path="/urls" element={<UrlsTable />} />
             <Route path="/qrcodes" element={<QRCodeTab />} />
             <Route path="/analytics" element={<AnalyticsPage />} />
@@ -41,7 +42,7 @@ console.log("token: ", token);
             <Route path="/settings" element={<SettingsPage />} />
 
           </Route>
-        )}
+        </Route>
 
       </Routes>
     </BrowserRouter>

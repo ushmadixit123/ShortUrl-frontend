@@ -16,15 +16,18 @@ import DownloadIcon from "@mui/icons-material/Download";
 import { QRCodeCanvas } from "qrcode.react";
 
 import { useDispatch, useSelector } from "react-redux";
-import { createURL } from "../redux/slices/urlSlice";
+import { createQR } from "../redux/slices/urlSlice";
 
 
 
 const QRCodeTab = () => {
     const dispatch = useDispatch();
-    const { shortUrl, loading } = useSelector((state) => state.url);
+
+    const { QR, loading } = useSelector((state) => state.url);
 
     const [longUrl, setLongUrl] = useState("");
+    const [url, setUrl] = useState(null);
+    
     const qrRef = useRef(null);
 
     const handleShare = async () => {
@@ -33,7 +36,7 @@ const QRCodeTab = () => {
                 await navigator.share({
                     title: "Check this link",
                     text: "Here is the shortened link:",
-                    url: shortUrl,
+                    url: QR,
                 });
             } catch (error) {
                 console.error("Sharing failed", error);
@@ -47,11 +50,13 @@ const QRCodeTab = () => {
         e.preventDefault();
         if (!longUrl.trim()) return;
 
-        dispatch(createURL(longUrl));
+        dispatch(createQR(longUrl));
+        setUrl(QR);
+
     };
 
     const handleCopy = () => {
-        navigator.clipboard.writeText(shortUrl);
+        navigator.clipboard.writeText(url);
     };
 
     const handleDownload = () => {
@@ -109,12 +114,12 @@ const QRCodeTab = () => {
                         </Stack>
                     </form>
 
-                    {/* Show QR only when shortUrl exists */}
-                    {shortUrl && !loading && (
+                    {/* Show QR only when QR exists */}
+                    {url && !loading && (
                         <Stack spacing={2} alignItems="center">
                             <div ref={qrRef}>
                                 <QRCodeCanvas
-                                    value={shortUrl}
+                                    value={url}
                                     size={200}
                                     level="H"
                                     includeMargin={true}
@@ -125,7 +130,7 @@ const QRCodeTab = () => {
                                 variant="body2"
                                 sx={{ wordBreak: "break-all", textAlign: "center" }}
                             >
-                                {shortUrl}
+                                {url}
                             </Typography>
 
                             <Stack direction="row" spacing={2}>

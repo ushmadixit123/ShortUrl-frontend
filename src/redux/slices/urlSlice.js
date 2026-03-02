@@ -16,6 +16,21 @@ export const createURL = createAsyncThunk(
     }
 );
 
+// create QR code 
+export const createQR = createAsyncThunk(
+    "url/createOR",
+    async (data, thunkAPI) => {
+        try {
+            const response = await api.post("url/shorten", {longUrl : data});
+            return response.data; // Always return response.data
+        } catch (err) {
+            return thunkAPI.rejectWithValue(
+                err.response?.data || "Something went wrong"
+            );
+        }
+    }
+);
+
 // ✅ Get All URLs (for dashboard)
 export const getUserURLs = createAsyncThunk(
     "url/getUserURLs",
@@ -52,6 +67,7 @@ const urlSlice = createSlice({
     initialState: {
         urls: [],
         shortUrl: null,
+        QR:null,
         loading: false,
         error: null,
         success: false,
@@ -78,6 +94,21 @@ const urlSlice = createSlice({
                 state.loading = false;
                 state.error = action.payload;
             })
+
+            // 🔹 CREATE QR
+            .addCase(createQR.pending, (state) => {
+                state.loading = true;
+            })
+            .addCase(createQR.fulfilled, (state, action) => {
+                state.loading = false;
+                state.success = true;
+                state.QR = action.payload.shortUrl; // add new URL on top
+            })
+            .addCase(createQR.rejected, (state, action) => {
+                state.loading = false;
+                state.error = action.payload;
+            })
+
 
             // 🔹 GET URLS
             .addCase(getUserURLs.pending, (state) => {
